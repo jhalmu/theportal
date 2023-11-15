@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+INSTALLED_APPS += ('django_jinja',)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -53,7 +54,7 @@ ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'BACKEND': 'django_jinja.jinja2.Jinja2',
         'DIRS': [ BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -64,7 +65,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
-    },
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
