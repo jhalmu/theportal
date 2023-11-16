@@ -38,7 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-INSTALLED_APPS += ('django_jinja',)
+
+INSTALLED_APPS += [
+    'django_jinja',
+    'template_partials',
+    # 'compressor',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,8 +59,8 @@ ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django_jinja.jinja2.Jinja2',
-        'DIRS': [ BASE_DIR / "templates"],
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,6 +70,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
+    }
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
@@ -117,7 +123,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    # "/Users/juha/Documents/Projects/PYTHON/theportal/src/static",
     BASE_DIR / "static"
 ]
 
